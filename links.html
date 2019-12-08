@@ -273,6 +273,14 @@
 								</div>
 							</div>
 							<div class="swiper-slide">
+								<div class="stories__slide" title="Julia Base world">
+									<a href="./tags/./julia-base-world.html">
+										<div class="stories__slide-pic" style="background-image: url(./img/og/Julia-Base-world.png);"></div>
+										<div class="stories__slide-txt" style="">Julia Base world</div>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-slide">
 								<div class="stories__slide" title="kb mood">
 									<a href="./tags/./kb-mood.html">
 										<div class="stories__slide-pic" style="background-image: url(./img/og/kb-mood.png);"></div>
@@ -309,14 +317,6 @@
 									<a href="./tags/./mobile-mag.html">
 										<div class="stories__slide-pic" style="background-image: url(./img/og/mobile-mag.png);"></div>
 										<div class="stories__slide-txt" style="">mobile mag</div>
-									</a>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="stories__slide" title="gununkaresi">
-									<a href="./tags/./gununkaresi.html">
-										<div class="stories__slide-pic" style="background-image: url(./img/og/gununkaresi.png);"></div>
-										<div class="stories__slide-txt" style="">gununkaresi</div>
 									</a>
 								</div>
 							</div>
@@ -475,6 +475,17 @@ $(document).ready(function(){
                 contentType: 'application/json',
 		data : form_data
 	}).done(function(response){
+	    var email = response.email;
+		if (email) {
+	        $("#leadSent").text("Ваш запрос отправлен на " + email);
+		} else {
+	        $("#leadSent").text("Ваш запрос отправлен");
+		}
+
+		var input = form.find('input');
+		input.attr('readonly', true);
+        input.attr("disabled", true);
+		form.find('button').attr("disabled", true);
 	}).fail(function(){
 	});
 
